@@ -1,0 +1,29 @@
+{
+  "name": "bluebot_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build" : "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^4.17.23",
+    "@types/node": "^24.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "node-cron": "^4.2.0",
+    "oauth-1.0a": "^2.2.6",
+    "openai": "^5.8.2"
+  }
+}
