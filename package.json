@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build" : "npm install && tsc && npx ts-node setup.ts",
+    "build" : "npm install && tsc",
     "start": "node dist/server.js",
     "dev": "ts-node server.ts"
   },
