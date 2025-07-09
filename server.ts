@@ -20,18 +20,6 @@ const consumerSecret = process.env.CONSUMER_SECRET;
 const clientId = process.env.CLIENT_ID;
 // const clientSecret = process.env.CLIENT_SECRET;
 
-// firebase initialize
-
-import fs from "fs";
-
-const rawKey = process.env.FIREBASE_SERVICE_ACCOUNT;
-if (!rawKey) {
-  throw new Error("Missing FIREBASE_SERVICE_ACCOUNT env variable");
-}
-
-const filePath = "./serviceAccountKey.json";
-fs.writeFileSync(filePath, rawKey, { encoding: "utf8" });
-
 function buildOAuthHeader(params: Record<string, string>) {
   const headerParams = Object.entries(params)
     .map(([key, val]) => `${encodeURIComponent(key)}="${encodeURIComponent(val)}"`)
@@ -136,15 +124,12 @@ app.post('/completeOauth1', async (req: Request, res: Response) => {
     const parsed = querystring.parse(response.data);
     const oauth_token_db = parsed.oauth_token;
     const oauth_token_secret_db = parsed.oauth_token_secret;
-
     await db.collection("users").doc(user_name).set({
       oauth_token: oauth_token_db,
       oauth_token_secret: oauth_token_secret_db
     }, { merge: true });
-    console.log("oauth 1 success" , response.data );
     res.status(200).send("success");
   } catch (e) {
-    console.error("OAuth1 Error:", e);
     res.redirect(`bluebot://callback?auth1=error`);
   }
 });
@@ -226,10 +211,8 @@ app.post("/completeOauth2", async (req: Request, res: Response) => {
       refresh_token,
       expires_at
     }, { merge: true });
-    console.log("oauth 2 success " , response.data );
     res.status(200).send("success");
   } catch (e) {
-    console.error("OAuth2 Error:", e);
     res.redirect(`bluebot://callback?auth2=error`);
   }
 });
