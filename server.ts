@@ -260,6 +260,11 @@ app.get("/isUserTweeting",( req : Request , res : Response )=>{
     res.status(200).send( isUserTweeting(user_name).toString() );
 })
 
+
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
 app.listen( PORT , ()=>{
     console.log("Your server is running on port 3000");
 })
