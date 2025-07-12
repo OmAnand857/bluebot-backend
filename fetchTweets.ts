@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const topics = [
-  "cricket", "technology", "movies", "business", "geopolitics",
-  "war", "space", "politics", "startup", "health", "environment"
+  "cricket", "hollywood", "cricket", "bollywood", "india",
+  "war","bjp","cricket","congress"
 ];
 
 const NEWS_API_KEY = process.env.NEWSDATA_API_KEY!;
